@@ -21,6 +21,10 @@
     ".": {
       "types": "./build/index.d.ts",
       "import": "./build/index.js"
+    },
+    "./panda": {
+      "types": "./build/panda/index.d.ts",
+      "import": "./build/panda/index.js"
     }
   },
   "scripts": {

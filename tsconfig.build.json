@@ -8,5 +8,5 @@
     "noImplicitAny": false
   },
   "include": [],
-  "files": ["src/index.ts"]
+  "files": ["src/index.ts", "src/panda/index.ts"]
 }

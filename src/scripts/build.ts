@@ -13,7 +13,7 @@ const preflight = async () => {
 const bundle = async () => {
   console.log("📦 Bundling...");
   await Bun.build({
-    entrypoints: ["src/index.ts"],
+    entrypoints: ["src/index.ts", "src/panda/index.ts"],
     outdir: "build",
     external: [
       "@pandacss/dev",
@@ -29,7 +29,7 @@ const bundle = async () => {
  */
 const postflight = async () => {
   console.log("📘 Generating type declarations...");
-  await $`bun tsup src/index.ts --dts-only --tsconfig tsconfig.build.json --format esm --out-dir build`;
+  await $`bun tsup src/index.ts src/panda/index.ts --dts-only --tsconfig tsconfig.build.json --format esm --out-dir build`;
   console.log("📘 Type declarations generated.\n");
 
   console.log("🧶 Publishing local package...");
