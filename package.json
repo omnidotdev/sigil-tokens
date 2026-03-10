@@ -29,7 +29,10 @@
   },
   "scripts": {
     "build": "bun src/scripts/build.ts",
-    "lint": "bunx tsc --noEmit"
+    "lint": "bunx tsc --noEmit",
+    "prepare": "husky",
+    "knip": "knip-bun",
+    "check": "biome check"
   },
   "peerDependencies": {
     "@pandacss/dev": ">=1.4.3",
