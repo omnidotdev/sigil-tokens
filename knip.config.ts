@@ -5,7 +5,8 @@ import type { KnipConfig } from "knip";
  * @see https://knip.dev/overview/configuration
  */
 const knipConfig: KnipConfig = {
-  project: ["src/**/*.ts", "src/**/*.tsx"],
+  entry: ["src/index.ts", "src/panda/index.ts"],
+  project: ["src/**/*.ts"],
 };
 
 export default knipConfig;
