@@ -5,6 +5,10 @@
     "clientKind": "git",
     "useIgnoreFile": true
   },
+  "files": {
+    "ignoreUnknown": false,
+    "includes": ["**", "!!build"]
+  },
   "assist": {
     "actions": {
       "source": {
