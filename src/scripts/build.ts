@@ -28,9 +28,16 @@ const postflight = async () => {
   await $`bun tsup src/index.ts src/panda/index.ts --dts-only --tsconfig tsconfig.build.json --format esm --out-dir build`;
   console.info("📘 Type declarations generated.\n");
 
-  console.info("🧶 Publishing local package...");
-  await $`bun knit push`;
-  console.info("🧶 Publishing local package complete.");
+  // Local package linking via knit is a dev convenience; it has no local store
+  // in CI (release/publish), so treat its absence as non-fatal rather than
+  // failing the build.
+  try {
+    console.info("🧶 Publishing local package...");
+    await $`bun knit push`;
+    console.info("🧶 Publishing local package complete.");
+  } catch {
+    console.warn("🧶 knit push skipped (no local store); continuing");
+  }
 };
 
 /**

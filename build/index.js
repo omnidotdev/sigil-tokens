@@ -13,131 +13,313 @@ var __export = (target, all) => {
     });
 };
 
+// src/extensions/index.ts
+var exports_extensions = {};
+__export(exports_extensions, {
+  breakpoints: () => breakpoints_theme_default,
+  keyframes: () => keyframes_theme_default,
+  layerStyles: () => layerStyles_theme_default,
+  textStyles: () => textStyles_theme_default
+});
+
+// src/semanticTokens/index.ts
+var exports_semanticTokens = {};
+__export(exports_semanticTokens, {
+  animations: () => animations_semantic_default,
+  aspectRatios: () => aspectRatios_semantic_default,
+  assets: () => assets_semantic_default,
+  blurs: () => blurs_semantic_default,
+  borderWidths: () => borderWidths_semantic_default,
+  borders: () => borders_semantic_default,
+  colors: () => colors_semantic_default,
+  containerNames: () => containerNames_semantic_default,
+  cursor: () => cursor_semantic_default,
+  durations: () => durations_semantic_default,
+  easings: () => easings_semantic_default,
+  fontSizes: () => fontSizes_semantic_default,
+  fontWeights: () => fontWeights_semantic_default,
+  fonts: () => fonts_semantic_default,
+  gradients: () => gradients_semantic_default,
+  letterSpacings: () => letterSpacings_semantic_default,
+  lineHeights: () => lineHeights_semantic_default,
+  opacity: () => opacity_semantic_default,
+  radii: () => radii_semantic_default,
+  shadows: () => shadows_semantic_default,
+  sizes: () => sizes_semantic_default,
+  spacing: () => spacing_semantic_default,
+  zIndex: () => zIndex_semantic_default
+});
+
 // src/tokens/index.ts
 var exports_tokens = {};
 __export(exports_tokens, {
-  zIndex: () => zIndex_tokens_default,
-  utilityColors: () => utilityColors,
-  spacing: () => spacing_tokens_default,
-  sizes: () => sizes_tokens_default,
-  shadows: () => shadows_tokens_default,
-  radii: () => radii_tokens_default,
-  opacity: () => opacity_tokens_default,
-  omniColors: () => omniColors,
-  neutrals: () => neutrals,
-  neutralColors: () => neutralColors,
-  lineHeights: () => lineHeights_tokens_default,
-  letterSpacings: () => letterSpacings_tokens_default,
-  gradients: () => gradients_tokens_default,
-  generateAlphaColors: () => generateAlphaColors,
-  fonts: () => fonts_tokens_default,
-  fontWeights: () => fontWeights_tokens_default,
-  fontSizes: () => fontSizes_tokens_default,
-  easings: () => easings_tokens_default,
-  durations: () => durations_tokens_default,
-  cursor: () => cursor_tokens_default,
-  containerNames: () => containerNames_tokens_default,
-  colors: () => colors_tokens_default,
-  brandColors: () => brandColors,
-  borders: () => borders_tokens_default,
-  borderWidths: () => borderWidths_tokens_default,
-  blurs: () => blurs_tokens_default,
-  baseColors: () => baseColors,
-  assets: () => assets_tokens_default,
+  animations: () => animations_tokens_default,
   aspectRatios: () => aspectRatios_tokens_default,
-  animations: () => animations_tokens_default
+  assets: () => assets_tokens_default,
+  baseColors: () => baseColors,
+  blurs: () => blurs_tokens_default,
+  borderWidths: () => borderWidths_tokens_default,
+  borders: () => borders_tokens_default,
+  brandColors: () => brandColors,
+  colors: () => colors_tokens_default,
+  containerNames: () => containerNames_tokens_default,
+  cursor: () => cursor_tokens_default,
+  durations: () => durations_tokens_default,
+  easings: () => easings_tokens_default,
+  fontSizes: () => fontSizes_tokens_default,
+  fontWeights: () => fontWeights_tokens_default,
+  fonts: () => fonts_tokens_default,
+  generateAlphaColors: () => generateAlphaColors,
+  gradients: () => gradients_tokens_default,
+  letterSpacings: () => letterSpacings_tokens_default,
+  lineHeights: () => lineHeights_tokens_default,
+  neutralColors: () => neutralColors,
+  neutrals: () => neutrals,
+  omniColors: () => omniColors,
+  opacity: () => opacity_tokens_default,
+  radii: () => radii_tokens_default,
+  shadows: () => shadows_tokens_default,
+  sizes: () => sizes_tokens_default,
+  spacing: () => spacing_tokens_default,
+  utilityColors: () => utilityColors,
+  zIndex: () => zIndex_tokens_default
 });
 
-// src/tokens/animations.tokens.ts
-import { defineTokens } from "@pandacss/dev";
-var animations = defineTokens.animations({
-  spin: { value: "spin 1s linear infinite" },
-  ping: { value: "ping 1s cubic-bezier(0, 0, 0.2, 1) infinite" },
-  pulse: { value: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite" },
-  bounce: { value: "bounce 1s infinite" },
-  "backdrop-in": {
-    value: "fade-in 250ms {easings.emphasized-in}"
+// src/conditions.theme.ts
+var conditions = {
+  extend: {
+    current: "&:is([data-current])",
+    hidden: "&:is([hidden])",
+    hover: [
+      "@media (hover: hover) and (pointer: fine)",
+      "&:is(:hover, [data-hover])"
+    ],
+    indeterminate: "&:is(:indeterminate, [data-indeterminate], [aria-checked=mixed], [data-state=indeterminate])",
+    off: '&:is([data-state="off"])',
+    on: '&:is([data-state="on"])',
+    today: "&:is([data-today])",
+    underValue: '&:is([data-state="under-value"])'
+  }
+};
+var conditions_theme_default = conditions;
+// src/extensions/breakpoints.theme.ts
+var breakpoints = {
+  base: "0em",
+  sm: "40em",
+  md: "48em",
+  lg: "64em",
+  xl: "80em",
+  "2xl": "96em"
+};
+var breakpoints_theme_default = breakpoints;
+// src/extensions/keyframes.theme.ts
+import { defineKeyframes } from "@pandacss/dev";
+var keyframes = defineKeyframes({
+  spin: {
+    to: {
+      transform: "rotate(360deg)"
+    }
   },
-  "backdrop-out": {
-    value: "fade-out 200ms {easings.emphasized-out}"
+  ping: {
+    "75%, 100%": {
+      transform: "scale(2)",
+      opacity: 0
+    }
   },
-  "dialog-in": {
-    value: "slide-in 400ms {easings.emphasized-in}"
-  },
-  "dialog-out": {
-    value: "slide-out 200ms {easings.emphasized-out}"
-  },
-  "drawer-in-left": {
-    value: "slide-in-left 400ms {easings.emphasized-in}"
-  },
-  "drawer-out-left": {
-    value: "slide-out-left 200ms {easings.emphasized-out}"
-  },
-  "drawer-in-right": {
-    value: "slide-in-right 400ms {easings.emphasized-in}"
-  },
-  "drawer-out-right": {
-    value: "slide-out-right 200ms {easings.emphasized-out}"
-  },
-  "drawer-in-bottom": {
-    value: "slide-in-bottom 400ms {easings.emphasized-in}"
-  },
-  "drawer-out-bottom": {
-    value: "slide-out-bottom 200ms {easings.emphasized-out}"
+  bounce: {
+    "0%, 100%": {
+      transform: "translateY(-25%)",
+      animationTimingFunction: "cubic-bezier(0.8,0,1,1)"
+    },
+    "50%": {
+      transform: "none",
+      animationTimingFunction: "cubic-bezier(0,0,0.2,1)"
+    }
   },
   "fade-in": {
-    value: "fade-in 400ms {easings.emphasized-in}"
+    from: { opacity: 0 },
+    to: { opacity: 1 }
+  },
+  "fade-out": {
+    from: { opacity: 1 },
+    to: { opacity: 0 }
+  },
+  "slide-in": {
+    "0%": { opacity: 0, transform: "translateY(64px)" },
+    "100%": { opacity: 1, transform: "translateY(0)" }
+  },
+  "slide-out": {
+    "0%": { opacity: 1, transform: "translateY(0)" },
+    "100%": { opacity: 0, transform: "translateY(64px)" }
+  },
+  "slide-in-left": {
+    "0%": { transform: "translateX(-100%)" },
+    "100%": { transform: "translateX(0%)" }
+  },
+  "slide-out-left": {
+    "0%": { transform: "translateX(0%)" },
+    "100%": { transform: "translateX(-100%)" }
+  },
+  "slide-in-right": {
+    "0%": { transform: "translateX(100%)" },
+    "100%": { transform: "translateX(0%)" }
+  },
+  "slide-out-right": {
+    "0%": { transform: "translateX(0%)" },
+    "100%": { transform: "translateX(100%)" }
   },
   "collapse-in": {
-    value: "collapse-in 250ms {easings.emphasized-in}"
+    "0%": { height: "0" },
+    "100%": { height: "var(--height)" }
   },
   "collapse-out": {
-    value: "collapse-out 200ms {easings.emphasized-out}"
+    "0%": { height: "var(--height)" },
+    "100%": { height: "0" }
+  },
+  fadeIn: {
+    "0%": { opacity: 0, transform: "translateY(-4px)" },
+    "100%": { opacity: 1, transform: "translateY(0)" }
+  },
+  fadeOut: {
+    "0%": { opacity: 1, transform: "translateY(0)" },
+    "100%": { opacity: 0, transform: "translateY(-4px)" }
   },
   "skeleton-pulse": {
-    value: "skeleton-pulse 2s {easings.pulse} infinite"
+    "50%": {
+      opacity: 0.5
+    }
   }
 });
-var animations_tokens_default = animations;
-// src/tokens/aspectRatios.tokens.ts
-import { defineTokens as defineTokens2 } from "@pandacss/dev";
-var aspectRatios = defineTokens2.aspectRatios({
-  "1:1": { value: "1" },
-  "4:3": { value: "4 / 3" },
-  "3:4": { value: "3 / 4" },
-  "16:9": { value: "16 / 9" },
-  "18:5": { value: "18 / 5" },
-  "1.618:1": { value: "1.618 / 1" }
+var keyframes_theme_default = keyframes;
+// src/extensions/layerStyles.theme.ts
+import { defineLayerStyles } from "@pandacss/dev";
+var layerStyles = defineLayerStyles({});
+var layerStyles_theme_default = layerStyles;
+// src/extensions/textStyles.theme.ts
+import { defineTextStyles } from "@pandacss/dev";
+var textStyles = defineTextStyles({
+  "2xs": { value: { fontSize: "2xs", lineHeight: "0.75rem" } },
+  xs: { value: { fontSize: "xs", lineHeight: "1.125rem" } },
+  sm: { value: { fontSize: "sm", lineHeight: "1.25rem" } },
+  md: { value: { fontSize: "md", lineHeight: "1.5rem" } },
+  lg: { value: { fontSize: "lg", lineHeight: "1.75rem" } },
+  xl: { value: { fontSize: "xl", lineHeight: "1.875rem" } },
+  "2xl": { value: { fontSize: "2xl", lineHeight: "2rem" } },
+  "3xl": { value: { fontSize: "3xl", lineHeight: "2.375rem" } },
+  "4xl": {
+    value: { fontSize: "4xl", lineHeight: "2.75rem", letterSpacing: "-0.02em" }
+  },
+  "5xl": {
+    value: { fontSize: "5xl", lineHeight: "3.75rem", letterSpacing: "-0.02em" }
+  },
+  "6xl": {
+    value: { fontSize: "6xl", lineHeight: "4.5rem", letterSpacing: "-0.02em" }
+  },
+  "7xl": {
+    value: { fontSize: "7xl", lineHeight: "5.75rem", letterSpacing: "-0.02em" }
+  },
+  "8xl": {
+    value: { fontSize: "8xl", lineHeight: "6.5rem", letterSpacing: "-0.02em" }
+  },
+  "9xl": {
+    value: { fontSize: "9xl", lineHeight: "7.5rem", letterSpacing: "-0.02em" }
+  }
 });
-var aspectRatios_tokens_default = aspectRatios;
-// src/tokens/assets.tokens.ts
-import { defineTokens as defineTokens3 } from "@pandacss/dev";
-var assets = defineTokens3.assets({});
-var assets_tokens_default = assets;
-// src/tokens/blurs.tokens.ts
-import { defineTokens as defineTokens4 } from "@pandacss/dev";
-var blurs = defineTokens4.blurs({
-  sm: { value: "4px" },
-  base: { value: "8px" },
-  md: { value: "12px" },
-  lg: { value: "16px" },
-  xl: { value: "24px" },
-  "2xl": { value: "40px" },
-  "3xl": { value: "64px" }
+var textStyles_theme_default = textStyles;
+// src/globalCss.theme.ts
+import { defineGlobalStyles } from "@pandacss/dev";
+
+// src/semanticTokens/fonts.semantic.ts
+import { defineSemanticTokens } from "@pandacss/dev";
+var fonts = defineSemanticTokens.fonts({
+  primary: {
+    value: `var(--font-primary), "Helvetica Neue", Helvetica, Arial, sans-serif`,
+    description: "Primary font"
+  },
+  code: {
+    value: "var(--font-code), monospace",
+    description: "Code font"
+  }
 });
-var blurs_tokens_default = blurs;
-// src/tokens/borders.tokens.ts
-import { defineTokens as defineTokens5 } from "@pandacss/dev";
-var borders = defineTokens5.borders({
-  none: { value: "none" }
+var fonts_semantic_default = fonts;
+
+// src/globalCss.theme.ts
+var globalCss = defineGlobalStyles({
+  "html, body": {
+    fontFamily: fonts_semantic_default["primary"].value
+  },
+  html: {
+    lineHeight: 1.5,
+    MozOsxFontSmoothing: "grayscale",
+    textRendering: "optimizeLegibility",
+    WebkitFontSmoothing: "antialiased",
+    WebkitTextSizeAdjust: "100%",
+    scrollPaddingTop: "6rem",
+    minHeight: "100%",
+    scrollBehavior: "smooth"
+  },
+  body: {
+    color: "foreground.default",
+    bgColor: "background.canvas",
+    fontFamily: "var(--font-primary), sans-serif",
+    _light: {
+      colorScheme: "light"
+    },
+    _dark: {
+      colorScheme: "dark"
+    }
+  },
+  "*, *::before, *::after": {
+    borderColor: "border.subtle",
+    borderStyle: "solid",
+    boxSizing: "border-box"
+  },
+  "*::placeholder": {
+    opacity: 1,
+    color: "foreground.subtle"
+  },
+  "*::selection": {
+    color: "background.default",
+    bgColor: "accent.default"
+  }
 });
-var borders_tokens_default = borders;
-// src/tokens/borderWidths.tokens.ts
-import { defineTokens as defineTokens6 } from "@pandacss/dev";
-var borderWidths = defineTokens6.borderWidths({});
-var borderWidths_tokens_default = borderWidths;
+var globalCss_theme_default = globalCss;
+// src/semanticTokens/animations.semantic.ts
+import { defineSemanticTokens as defineSemanticTokens2 } from "@pandacss/dev";
+var animations = defineSemanticTokens2.animations({});
+var animations_semantic_default = animations;
+// src/semanticTokens/aspectRatios.semantic.ts
+import { defineSemanticTokens as defineSemanticTokens3 } from "@pandacss/dev";
+var aspectRatios = defineSemanticTokens3.aspectRatios({
+  square: { value: "1 / 1" },
+  landscape: { value: "4 / 3" },
+  portrait: { value: "3 / 4" },
+  wide: { value: "16 / 9" },
+  ultrawide: { value: "18 / 5" },
+  golden: { value: "1.618 / 1" }
+});
+var aspectRatios_semantic_default = aspectRatios;
+// src/semanticTokens/assets.semantic.ts
+import { defineSemanticTokens as defineSemanticTokens4 } from "@pandacss/dev";
+var assets = defineSemanticTokens4.assets({});
+var assets_semantic_default = assets;
+// src/semanticTokens/blurs.semantic.ts
+import { defineSemanticTokens as defineSemanticTokens5 } from "@pandacss/dev";
+var blurs = defineSemanticTokens5.blurs({});
+var blurs_semantic_default = blurs;
+// src/semanticTokens/borders.semantic.ts
+import { defineSemanticTokens as defineSemanticTokens6 } from "@pandacss/dev";
+var borders = defineSemanticTokens6.borders({});
+var borders_semantic_default = borders;
+// src/semanticTokens/borderWidths.semantic.ts
+import { defineSemanticTokens as defineSemanticTokens7 } from "@pandacss/dev";
+var borderWidths = defineSemanticTokens7.borderWidths({});
+var borderWidths_semantic_default = borderWidths;
+// src/semanticTokens/colors.semantic.ts
+import { defineSemanticTokens as defineSemanticTokens8 } from "@pandacss/dev";
+
 // src/tokens/colors.tokens.ts
-import { defineTokens as defineTokens7 } from "@pandacss/dev";
+import { defineTokens } from "@pandacss/dev";
 import { assign } from "radash";
 
 // src/util/hexToRgba.ts
@@ -656,7 +838,7 @@ var neutralColors = {
 };
 var neutrals = assign(neutralColors, generateAlphaColors(neutralColors));
 var bases = assign(baseColors, generateAlphaColors(baseColors));
-var colors = defineTokens7.colors({
+var colors = defineTokens.colors({
   omni: assign(omniColors, generateAlphaColors(omniColors)),
   brand: assign(brandColors, generateAlphaColors(brandColors)),
   ...utilityColors,
@@ -664,361 +846,15 @@ var colors = defineTokens7.colors({
   ...neutrals
 });
 var colors_tokens_default = colors;
-// src/tokens/containerNames.tokens.ts
-import { defineTokens as defineTokens8 } from "@pandacss/dev";
-var containerNames = defineTokens8.containerNames({});
-var containerNames_tokens_default = containerNames;
-// src/tokens/cursor.tokens.ts
-import { defineTokens as defineTokens9 } from "@pandacss/dev";
-var cursor = defineTokens9.cursor({});
-var cursor_tokens_default = cursor;
-// src/tokens/durations.tokens.ts
-import { defineTokens as defineTokens10 } from "@pandacss/dev";
-var durations = defineTokens10.durations({
-  fastest: { value: "50ms" },
-  faster: { value: "100ms" },
-  fast: { value: "150ms" },
-  normal: { value: "200ms" },
-  slow: { value: "300ms" },
-  slower: { value: "400ms" },
-  slowest: { value: "500ms" }
-});
-var durations_tokens_default = durations;
-// src/tokens/easings.tokens.ts
-import { defineTokens as defineTokens11 } from "@pandacss/dev";
-var easings = defineTokens11.easings({
-  default: { value: "cubic-bezier(0.4, 0, 0.2, 1)" },
-  linear: { value: "linear" },
-  pulse: { value: "cubic-bezier(0.4, 0.0, 0.6, 1.0)" },
-  in: { value: "cubic-bezier(0.4, 0, 1, 1)" },
-  out: { value: "cubic-bezier(0, 0, 0.2, 1)" },
-  "in-out": { value: "cubic-bezier(0.4, 0, 0.2, 1)" },
-  "emphasized-in": { value: "cubic-bezier(0.05, 0.7, 0.1, 1)" },
-  "emphasized-out": { value: "cubic-bezier(0.3, 0, 0.8, 0.15)" }
-});
-var easings_tokens_default = easings;
-// src/tokens/fonts.tokens.ts
-import { defineTokens as defineTokens12 } from "@pandacss/dev";
-var fonts = defineTokens12.fonts({
-  sans: {
-    value: [
-      "ui-sans-serif",
-      "system-ui",
-      "-apple-system",
-      "BlinkMacSystemFont",
-      '"Segoe UI"',
-      "Roboto",
-      '"Helvetica Neue"',
-      "Arial",
-      '"Noto Sans"',
-      "sans-serif",
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-      '"Noto Color Emoji"'
-    ]
-  },
-  serif: {
-    value: [
-      "ui-serif",
-      "Georgia",
-      "Cambria",
-      '"Times New Roman"',
-      "Times",
-      "serif"
-    ]
-  },
-  mono: {
-    value: [
-      "ui-monospace",
-      "SFMono-Regular",
-      "Menlo",
-      "Monaco",
-      "Consolas",
-      '"Liberation Mono"',
-      '"Courier New"',
-      "monospace"
-    ]
-  },
-  assistant: {
-    value: `var(--font-assistant), "Helvetica Neue", Helvetica, Arial, sans-serif`,
-    description: "Assistant (sans-serif) font"
-  },
-  firaCode: {
-    value: `var(--font-fira-code), monospace`,
-    description: "Fira Code (mono) font"
-  }
-});
-var fonts_tokens_default = fonts;
-// src/tokens/fontSizes.tokens.ts
-import { defineTokens as defineTokens13 } from "@pandacss/dev";
-var fontSizes = defineTokens13.fontSizes({
-  "2xs": { value: "0.5rem" },
-  xs: { value: "0.75rem" },
-  sm: { value: "0.875rem" },
-  md: { value: "1rem" },
-  lg: { value: "1.125rem" },
-  xl: { value: "1.25rem" },
-  "2xl": { value: "1.5rem" },
-  "3xl": { value: "1.875rem" },
-  "4xl": { value: "2.25rem" },
-  "5xl": { value: "3rem" },
-  "6xl": { value: "3.75rem" },
-  "7xl": { value: "4.5rem" },
-  "8xl": { value: "6rem" },
-  "9xl": { value: "8rem" }
-});
-var fontSizes_tokens_default = fontSizes;
-// src/tokens/fontWeights.tokens.ts
-import { defineTokens as defineTokens14 } from "@pandacss/dev";
-var fontWeights = defineTokens14.fontWeights({
-  thin: { value: 100 },
-  extralight: { value: 200 },
-  light: { value: 300 },
-  normal: { value: 400 },
-  medium: { value: 500 },
-  semibold: { value: 600 },
-  bold: { value: 700 },
-  extrabold: { value: 800 },
-  black: { value: 900 }
-});
-var fontWeights_tokens_default = fontWeights;
-// src/tokens/gradients.tokens.ts
-import { defineTokens as defineTokens15 } from "@pandacss/dev";
-var gradients = defineTokens15.gradients({});
-var gradients_tokens_default = gradients;
-// src/tokens/letterSpacings.tokens.ts
-import { defineTokens as defineTokens16 } from "@pandacss/dev";
-var letterSpacings = defineTokens16.letterSpacings({
-  tighter: { value: "-0.05em" },
-  tight: { value: "-0.025em" },
-  normal: { value: "0em" },
-  wide: { value: "0.025em" },
-  wider: { value: "0.05em" },
-  widest: { value: "0.1em" }
-});
-var letterSpacings_tokens_default = letterSpacings;
-// src/tokens/lineHeights.tokens.ts
-import { defineTokens as defineTokens17 } from "@pandacss/dev";
-var lineHeights = defineTokens17.lineHeights({
-  none: { value: 1 },
-  tight: { value: 1.25 },
-  snug: { value: 1.375 },
-  normal: { value: 1.5 },
-  relaxed: { value: 1.75 },
-  loose: { value: 2 }
-});
-var lineHeights_tokens_default = lineHeights;
-// src/tokens/opacity.tokens.ts
-import { defineTokens as defineTokens18 } from "@pandacss/dev";
-var opacity = defineTokens18.opacity({});
-var opacity_tokens_default = opacity;
-// src/tokens/radii.tokens.ts
-import { defineTokens as defineTokens19 } from "@pandacss/dev";
-var radii = defineTokens19.radii({
-  none: { value: "0" },
-  "2xs": { value: "0.0625rem" },
-  xs: { value: "0.125rem" },
-  sm: { value: "0.25rem" },
-  md: { value: "0.375rem" },
-  lg: { value: "0.5rem" },
-  xl: { value: "0.75rem" },
-  "2xl": { value: "1rem" },
-  "3xl": { value: "1.5rem" },
-  full: { value: "9999px" }
-});
-var radii_tokens_default = radii;
-// src/tokens/shadows.tokens.ts
-import { defineTokens as defineTokens20 } from "@pandacss/dev";
-var shadows = defineTokens20.shadows({});
-var shadows_tokens_default = shadows;
-// src/tokens/sizes.tokens.ts
-import { defineTokens as defineTokens22 } from "@pandacss/dev";
 
-// src/tokens/spacing.tokens.ts
-import { defineTokens as defineTokens21 } from "@pandacss/dev";
-var spacing = defineTokens21.spacing({
-  0: { value: "0rem" },
-  0.5: { value: "0.125rem" },
-  1: { value: "0.25rem" },
-  1.5: { value: "0.375rem" },
-  2: { value: "0.5rem" },
-  2.5: { value: "0.625rem" },
-  3: { value: "0.75rem" },
-  3.5: { value: "0.875rem" },
-  4: { value: "1rem" },
-  4.5: { value: "1.125rem" },
-  5: { value: "1.25rem" },
-  6: { value: "1.5rem" },
-  7: { value: "1.75rem" },
-  8: { value: "2rem" },
-  9: { value: "2.25rem" },
-  10: { value: "2.5rem" },
-  11: { value: "2.75rem" },
-  12: { value: "3rem" },
-  14: { value: "3.5rem" },
-  16: { value: "4rem" },
-  20: { value: "5rem" },
-  20.5: { value: "5.125rem" },
-  21: { value: "5.25rem" },
-  21.5: { value: "5.375rem" },
-  22: { value: "5.5rem" },
-  22.5: { value: "5.625rem" },
-  23: { value: "5.75rem" },
-  23.5: { value: "5.875rem" },
-  24: { value: "6rem" },
-  28: { value: "7rem" },
-  32: { value: "8rem" },
-  36: { value: "9rem" },
-  40: { value: "10rem" },
-  44: { value: "11rem" },
-  48: { value: "12rem" },
-  52: { value: "13rem" },
-  56: { value: "14rem" },
-  60: { value: "15rem" },
-  62: { value: "15.5rem" },
-  64: { value: "16rem" },
-  72: { value: "18rem" },
-  80: { value: "20rem" },
-  96: { value: "24rem" }
-});
-var spacing_tokens_default = spacing;
-
-// src/tokens/sizes.tokens.ts
-var sizes = defineTokens22.sizes({
-  ...spacing_tokens_default,
-  full: { value: "100%" },
-  min: { value: "min-content" },
-  max: { value: "max-content" },
-  fit: { value: "fit-content" },
-  prose: { value: "65ch" },
-  "2xs": { value: "16rem" },
-  xs: { value: "20rem" },
-  sm: { value: "24rem" },
-  md: { value: "28rem" },
-  lg: { value: "32rem" },
-  xl: { value: "36rem" },
-  "2xl": { value: "42rem" },
-  "3xl": { value: "48rem" },
-  "4xl": { value: "56rem" },
-  "5xl": { value: "64rem" },
-  "6xl": { value: "72rem" },
-  "7xl": { value: "80rem" },
-  "8xl": { value: "90rem" }
-});
-var sizes_tokens_default = sizes;
-// src/tokens/zIndex.tokens.ts
-import { defineTokens as defineTokens23 } from "@pandacss/dev";
-var zIndex = defineTokens23.zIndex({
-  hide: {
-    value: -1
-  },
-  base: {
-    value: 0
-  },
-  foreground: {
-    value: 1
-  },
-  docked: {
-    value: 10
-  },
-  dropdown: {
-    value: 1000
-  },
-  sticky: {
-    value: 1100
-  },
-  banner: {
-    value: 1200
-  },
-  overlay: {
-    value: 1300
-  },
-  dialog: {
-    value: 1400
-  },
-  popover: {
-    value: 1500
-  },
-  skipLink: {
-    value: 1600
-  },
-  toast: {
-    value: 1700
-  },
-  tooltip: {
-    value: 1800
-  }
-});
-var zIndex_tokens_default = zIndex;
-// src/semanticTokens/index.ts
-var exports_semanticTokens = {};
-__export(exports_semanticTokens, {
-  zIndex: () => zIndex_semantic_default,
-  spacing: () => spacing_semantic_default,
-  sizes: () => sizes_semantic_default,
-  shadows: () => shadows_semantic_default,
-  radii: () => radii_semantic_default,
-  opacity: () => opacity_semantic_default,
-  lineHeights: () => lineHeights_semantic_default,
-  letterSpacings: () => letterSpacings_semantic_default,
-  gradients: () => gradients_semantic_default,
-  fonts: () => fonts_semantic_default,
-  fontWeights: () => fontWeights_semantic_default,
-  fontSizes: () => fontSizes_semantic_default,
-  easings: () => easings_semantic_default,
-  durations: () => durations_semantic_default,
-  cursor: () => cursor_semantic_default,
-  containerNames: () => containerNames_semantic_default,
-  colors: () => colors_semantic_default,
-  borders: () => borders_semantic_default,
-  borderWidths: () => borderWidths_semantic_default,
-  blurs: () => blurs_semantic_default,
-  assets: () => assets_semantic_default,
-  aspectRatios: () => aspectRatios_semantic_default,
-  animations: () => animations_semantic_default
-});
-
-// src/semanticTokens/animations.semantic.ts
-import { defineSemanticTokens } from "@pandacss/dev";
-var animations2 = defineSemanticTokens.animations({});
-var animations_semantic_default = animations2;
-// src/semanticTokens/aspectRatios.semantic.ts
-import { defineSemanticTokens as defineSemanticTokens2 } from "@pandacss/dev";
-var aspectRatios2 = defineSemanticTokens2.aspectRatios({
-  square: { value: "1 / 1" },
-  landscape: { value: "4 / 3" },
-  portrait: { value: "3 / 4" },
-  wide: { value: "16 / 9" },
-  ultrawide: { value: "18 / 5" },
-  golden: { value: "1.618 / 1" }
-});
-var aspectRatios_semantic_default = aspectRatios2;
-// src/semanticTokens/assets.semantic.ts
-import { defineSemanticTokens as defineSemanticTokens3 } from "@pandacss/dev";
-var assets2 = defineSemanticTokens3.assets({});
-var assets_semantic_default = assets2;
-// src/semanticTokens/blurs.semantic.ts
-import { defineSemanticTokens as defineSemanticTokens4 } from "@pandacss/dev";
-var blurs2 = defineSemanticTokens4.blurs({});
-var blurs_semantic_default = blurs2;
-// src/semanticTokens/borders.semantic.ts
-import { defineSemanticTokens as defineSemanticTokens5 } from "@pandacss/dev";
-var borders2 = defineSemanticTokens5.borders({});
-var borders_semantic_default = borders2;
-// src/semanticTokens/borderWidths.semantic.ts
-import { defineSemanticTokens as defineSemanticTokens6 } from "@pandacss/dev";
-var borderWidths2 = defineSemanticTokens6.borderWidths({});
-var borderWidths_semantic_default = borderWidths2;
 // src/semanticTokens/colors.semantic.ts
-import { defineSemanticTokens as defineSemanticTokens7 } from "@pandacss/dev";
 var NEUTRAL_PALETTE = "silver";
-var generateSemanticColors = (colors2, { prefix } = {}) => {
+var generateSemanticColors = (colors, { prefix } = {}) => {
   const calculateTokenPath = ({
     color,
-    prefix: prefix2
-  }) => prefix2 ? `{colors.${prefix2}.${color}}` : `{colors.${color}}`;
-  return Object.keys(colors2).reduce((semanticColors, color) => {
+    prefix
+  }) => prefix ? `{colors.${prefix}.${color}}` : `{colors.${color}}`;
+  return Object.keys(colors).reduce((semanticColors, color) => {
     semanticColors[color] = {
       default: {
         value: {
@@ -1048,7 +884,7 @@ var generateSemanticColors = (colors2, { prefix } = {}) => {
     return semanticColors;
   }, {});
 };
-var colors2 = defineSemanticTokens7.colors({
+var colors2 = defineSemanticTokens8.colors({
   ...generateSemanticColors(baseColors),
   ...generateSemanticColors(omniColors, { prefix: "omni" }),
   ...generateSemanticColors(brandColors, { prefix: "brand" }),
@@ -1202,65 +1038,52 @@ var colors2 = defineSemanticTokens7.colors({
 });
 var colors_semantic_default = colors2;
 // src/semanticTokens/containerNames.semantic.ts
-import { defineSemanticTokens as defineSemanticTokens8 } from "@pandacss/dev";
-var containerNames2 = defineSemanticTokens8.containerNames({});
-var containerNames_semantic_default = containerNames2;
-// src/semanticTokens/cursor.semantic.ts
 import { defineSemanticTokens as defineSemanticTokens9 } from "@pandacss/dev";
-var cursor2 = defineSemanticTokens9.cursor({});
-var cursor_semantic_default = cursor2;
-// src/semanticTokens/durations.semantic.ts
+var containerNames = defineSemanticTokens9.containerNames({});
+var containerNames_semantic_default = containerNames;
+// src/semanticTokens/cursor.semantic.ts
 import { defineSemanticTokens as defineSemanticTokens10 } from "@pandacss/dev";
-var durations2 = defineSemanticTokens10.durations({});
-var durations_semantic_default = durations2;
-// src/semanticTokens/easings.semantic.ts
+var cursor = defineSemanticTokens10.cursor({});
+var cursor_semantic_default = cursor;
+// src/semanticTokens/durations.semantic.ts
 import { defineSemanticTokens as defineSemanticTokens11 } from "@pandacss/dev";
-var easings2 = defineSemanticTokens11.easings({});
-var easings_semantic_default = easings2;
-// src/semanticTokens/fonts.semantic.ts
+var durations = defineSemanticTokens11.durations({});
+var durations_semantic_default = durations;
+// src/semanticTokens/easings.semantic.ts
 import { defineSemanticTokens as defineSemanticTokens12 } from "@pandacss/dev";
-var fonts2 = defineSemanticTokens12.fonts({
-  primary: {
-    value: `var(--font-primary), "Helvetica Neue", Helvetica, Arial, sans-serif`,
-    description: "Primary font"
-  },
-  code: {
-    value: "var(--font-code), monospace",
-    description: "Code font"
-  }
-});
-var fonts_semantic_default = fonts2;
+var easings = defineSemanticTokens12.easings({});
+var easings_semantic_default = easings;
 // src/semanticTokens/fontSizes.semantic.ts
 import { defineSemanticTokens as defineSemanticTokens13 } from "@pandacss/dev";
-var fontSizes2 = defineSemanticTokens13.fontSizes({});
-var fontSizes_semantic_default = fontSizes2;
+var fontSizes = defineSemanticTokens13.fontSizes({});
+var fontSizes_semantic_default = fontSizes;
 // src/semanticTokens/fontWeights.semantic.ts
 import { defineSemanticTokens as defineSemanticTokens14 } from "@pandacss/dev";
-var fontWeights2 = defineSemanticTokens14.fontWeights({});
-var fontWeights_semantic_default = fontWeights2;
+var fontWeights = defineSemanticTokens14.fontWeights({});
+var fontWeights_semantic_default = fontWeights;
 // src/semanticTokens/gradients.semantic.ts
 import { defineSemanticTokens as defineSemanticTokens15 } from "@pandacss/dev";
-var gradients2 = defineSemanticTokens15.gradients({});
-var gradients_semantic_default = gradients2;
+var gradients = defineSemanticTokens15.gradients({});
+var gradients_semantic_default = gradients;
 // src/semanticTokens/letterSpacings.semantic.ts
 import { defineSemanticTokens as defineSemanticTokens16 } from "@pandacss/dev";
-var letterSpacings2 = defineSemanticTokens16.letterSpacings({});
-var letterSpacings_semantic_default = letterSpacings2;
+var letterSpacings = defineSemanticTokens16.letterSpacings({});
+var letterSpacings_semantic_default = letterSpacings;
 // src/semanticTokens/lineHeights.semantic.ts
 import { defineSemanticTokens as defineSemanticTokens17 } from "@pandacss/dev";
-var lineHeights2 = defineSemanticTokens17.lineHeights({});
-var lineHeights_semantic_default = lineHeights2;
+var lineHeights = defineSemanticTokens17.lineHeights({});
+var lineHeights_semantic_default = lineHeights;
 // src/semanticTokens/opacity.semantic.ts
 import { defineSemanticTokens as defineSemanticTokens18 } from "@pandacss/dev";
-var opacity2 = defineSemanticTokens18.opacity({});
-var opacity_semantic_default = opacity2;
+var opacity = defineSemanticTokens18.opacity({});
+var opacity_semantic_default = opacity;
 // src/semanticTokens/radii.semantic.ts
 import { defineSemanticTokens as defineSemanticTokens19 } from "@pandacss/dev";
-var radii2 = defineSemanticTokens19.radii({});
-var radii_semantic_default = radii2;
+var radii = defineSemanticTokens19.radii({});
+var radii_semantic_default = radii;
 // src/semanticTokens/shadows.semantic.ts
 import { defineSemanticTokens as defineSemanticTokens20 } from "@pandacss/dev";
-var shadows2 = defineSemanticTokens20.shadows({
+var shadows = defineSemanticTokens20.shadows({
   xs: {
     value: {
       base: "0px 1px 2px {colors.neutral.300a}, 0px 0px 1px {colors.neutral.500a}",
@@ -1298,216 +1121,399 @@ var shadows2 = defineSemanticTokens20.shadows({
     }
   }
 });
-var shadows_semantic_default = shadows2;
+var shadows_semantic_default = shadows;
 // src/semanticTokens/sizes.semantic.ts
 import { defineSemanticTokens as defineSemanticTokens21 } from "@pandacss/dev";
-var sizes2 = defineSemanticTokens21.sizes({});
-var sizes_semantic_default = sizes2;
+var sizes = defineSemanticTokens21.sizes({});
+var sizes_semantic_default = sizes;
 // src/semanticTokens/spacing.semantic.ts
 import { defineSemanticTokens as defineSemanticTokens22 } from "@pandacss/dev";
-var spacing2 = defineSemanticTokens22.spacing({});
-var spacing_semantic_default = spacing2;
+var spacing = defineSemanticTokens22.spacing({});
+var spacing_semantic_default = spacing;
 // src/semanticTokens/zIndex.semantic.ts
 import { defineSemanticTokens as defineSemanticTokens23 } from "@pandacss/dev";
-var zIndex2 = defineSemanticTokens23.zIndex({});
-var zIndex_semantic_default = zIndex2;
-// src/extensions/index.ts
-var exports_extensions = {};
-__export(exports_extensions, {
-  textStyles: () => textStyles_theme_default,
-  layerStyles: () => layerStyles_theme_default,
-  keyframes: () => keyframes_theme_default,
-  breakpoints: () => breakpoints_theme_default
-});
-
-// src/extensions/breakpoints.theme.ts
-var breakpoints = {
-  base: "0em",
-  sm: "40em",
-  md: "48em",
-  lg: "64em",
-  xl: "80em",
-  "2xl": "96em"
-};
-var breakpoints_theme_default = breakpoints;
-// src/extensions/keyframes.theme.ts
-import { defineKeyframes } from "@pandacss/dev";
-var keyframes = defineKeyframes({
-  spin: {
-    to: {
-      transform: "rotate(360deg)"
-    }
+var zIndex = defineSemanticTokens23.zIndex({});
+var zIndex_semantic_default = zIndex;
+// src/tokens/animations.tokens.ts
+import { defineTokens as defineTokens2 } from "@pandacss/dev";
+var animations2 = defineTokens2.animations({
+  spin: { value: "spin 1s linear infinite" },
+  ping: { value: "ping 1s cubic-bezier(0, 0, 0.2, 1) infinite" },
+  pulse: { value: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite" },
+  bounce: { value: "bounce 1s infinite" },
+  "backdrop-in": {
+    value: "fade-in 250ms {easings.emphasized-in}"
   },
-  ping: {
-    "75%, 100%": {
-      transform: "scale(2)",
-      opacity: 0
-    }
+  "backdrop-out": {
+    value: "fade-out 200ms {easings.emphasized-out}"
   },
-  bounce: {
-    "0%, 100%": {
-      transform: "translateY(-25%)",
-      animationTimingFunction: "cubic-bezier(0.8,0,1,1)"
-    },
-    "50%": {
-      transform: "none",
-      animationTimingFunction: "cubic-bezier(0,0,0.2,1)"
-    }
+  "dialog-in": {
+    value: "slide-in 400ms {easings.emphasized-in}"
+  },
+  "dialog-out": {
+    value: "slide-out 200ms {easings.emphasized-out}"
+  },
+  "drawer-in-left": {
+    value: "slide-in-left 400ms {easings.emphasized-in}"
+  },
+  "drawer-out-left": {
+    value: "slide-out-left 200ms {easings.emphasized-out}"
+  },
+  "drawer-in-right": {
+    value: "slide-in-right 400ms {easings.emphasized-in}"
+  },
+  "drawer-out-right": {
+    value: "slide-out-right 200ms {easings.emphasized-out}"
+  },
+  "drawer-in-bottom": {
+    value: "slide-in-bottom 400ms {easings.emphasized-in}"
+  },
+  "drawer-out-bottom": {
+    value: "slide-out-bottom 200ms {easings.emphasized-out}"
   },
   "fade-in": {
-    from: { opacity: 0 },
-    to: { opacity: 1 }
-  },
-  "fade-out": {
-    from: { opacity: 1 },
-    to: { opacity: 0 }
-  },
-  "slide-in": {
-    "0%": { opacity: 0, transform: "translateY(64px)" },
-    "100%": { opacity: 1, transform: "translateY(0)" }
-  },
-  "slide-out": {
-    "0%": { opacity: 1, transform: "translateY(0)" },
-    "100%": { opacity: 0, transform: "translateY(64px)" }
-  },
-  "slide-in-left": {
-    "0%": { transform: "translateX(-100%)" },
-    "100%": { transform: "translateX(0%)" }
-  },
-  "slide-out-left": {
-    "0%": { transform: "translateX(0%)" },
-    "100%": { transform: "translateX(-100%)" }
-  },
-  "slide-in-right": {
-    "0%": { transform: "translateX(100%)" },
-    "100%": { transform: "translateX(0%)" }
-  },
-  "slide-out-right": {
-    "0%": { transform: "translateX(0%)" },
-    "100%": { transform: "translateX(100%)" }
+    value: "fade-in 400ms {easings.emphasized-in}"
   },
   "collapse-in": {
-    "0%": { height: "0" },
-    "100%": { height: "var(--height)" }
+    value: "collapse-in 250ms {easings.emphasized-in}"
   },
   "collapse-out": {
-    "0%": { height: "var(--height)" },
-    "100%": { height: "0" }
-  },
-  fadeIn: {
-    "0%": { opacity: 0, transform: "translateY(-4px)" },
-    "100%": { opacity: 1, transform: "translateY(0)" }
-  },
-  fadeOut: {
-    "0%": { opacity: 1, transform: "translateY(0)" },
-    "100%": { opacity: 0, transform: "translateY(-4px)" }
+    value: "collapse-out 200ms {easings.emphasized-out}"
   },
   "skeleton-pulse": {
-    "50%": {
-      opacity: 0.5
-    }
+    value: "skeleton-pulse 2s {easings.pulse} infinite"
   }
 });
-var keyframes_theme_default = keyframes;
-// src/extensions/layerStyles.theme.ts
-import { defineLayerStyles } from "@pandacss/dev";
-var layerStyles = defineLayerStyles({});
-var layerStyles_theme_default = layerStyles;
-// src/extensions/textStyles.theme.ts
-import { defineTextStyles } from "@pandacss/dev";
-var textStyles = defineTextStyles({
-  "2xs": { value: { fontSize: "2xs", lineHeight: "0.75rem" } },
-  xs: { value: { fontSize: "xs", lineHeight: "1.125rem" } },
-  sm: { value: { fontSize: "sm", lineHeight: "1.25rem" } },
-  md: { value: { fontSize: "md", lineHeight: "1.5rem" } },
-  lg: { value: { fontSize: "lg", lineHeight: "1.75rem" } },
-  xl: { value: { fontSize: "xl", lineHeight: "1.875rem" } },
-  "2xl": { value: { fontSize: "2xl", lineHeight: "2rem" } },
-  "3xl": { value: { fontSize: "3xl", lineHeight: "2.375rem" } },
-  "4xl": {
-    value: { fontSize: "4xl", lineHeight: "2.75rem", letterSpacing: "-0.02em" }
+var animations_tokens_default = animations2;
+// src/tokens/aspectRatios.tokens.ts
+import { defineTokens as defineTokens3 } from "@pandacss/dev";
+var aspectRatios2 = defineTokens3.aspectRatios({
+  "1:1": { value: "1" },
+  "4:3": { value: "4 / 3" },
+  "3:4": { value: "3 / 4" },
+  "16:9": { value: "16 / 9" },
+  "18:5": { value: "18 / 5" },
+  "1.618:1": { value: "1.618 / 1" }
+});
+var aspectRatios_tokens_default = aspectRatios2;
+// src/tokens/assets.tokens.ts
+import { defineTokens as defineTokens4 } from "@pandacss/dev";
+var assets2 = defineTokens4.assets({});
+var assets_tokens_default = assets2;
+// src/tokens/blurs.tokens.ts
+import { defineTokens as defineTokens5 } from "@pandacss/dev";
+var blurs2 = defineTokens5.blurs({
+  sm: { value: "4px" },
+  base: { value: "8px" },
+  md: { value: "12px" },
+  lg: { value: "16px" },
+  xl: { value: "24px" },
+  "2xl": { value: "40px" },
+  "3xl": { value: "64px" }
+});
+var blurs_tokens_default = blurs2;
+// src/tokens/borders.tokens.ts
+import { defineTokens as defineTokens6 } from "@pandacss/dev";
+var borders2 = defineTokens6.borders({
+  none: { value: "none" }
+});
+var borders_tokens_default = borders2;
+// src/tokens/borderWidths.tokens.ts
+import { defineTokens as defineTokens7 } from "@pandacss/dev";
+var borderWidths2 = defineTokens7.borderWidths({});
+var borderWidths_tokens_default = borderWidths2;
+// src/tokens/containerNames.tokens.ts
+import { defineTokens as defineTokens8 } from "@pandacss/dev";
+var containerNames2 = defineTokens8.containerNames({});
+var containerNames_tokens_default = containerNames2;
+// src/tokens/cursor.tokens.ts
+import { defineTokens as defineTokens9 } from "@pandacss/dev";
+var cursor2 = defineTokens9.cursor({});
+var cursor_tokens_default = cursor2;
+// src/tokens/durations.tokens.ts
+import { defineTokens as defineTokens10 } from "@pandacss/dev";
+var durations2 = defineTokens10.durations({
+  fastest: { value: "50ms" },
+  faster: { value: "100ms" },
+  fast: { value: "150ms" },
+  normal: { value: "200ms" },
+  slow: { value: "300ms" },
+  slower: { value: "400ms" },
+  slowest: { value: "500ms" }
+});
+var durations_tokens_default = durations2;
+// src/tokens/easings.tokens.ts
+import { defineTokens as defineTokens11 } from "@pandacss/dev";
+var easings2 = defineTokens11.easings({
+  default: { value: "cubic-bezier(0.4, 0, 0.2, 1)" },
+  linear: { value: "linear" },
+  pulse: { value: "cubic-bezier(0.4, 0.0, 0.6, 1.0)" },
+  in: { value: "cubic-bezier(0.4, 0, 1, 1)" },
+  out: { value: "cubic-bezier(0, 0, 0.2, 1)" },
+  "in-out": { value: "cubic-bezier(0.4, 0, 0.2, 1)" },
+  "emphasized-in": { value: "cubic-bezier(0.05, 0.7, 0.1, 1)" },
+  "emphasized-out": { value: "cubic-bezier(0.3, 0, 0.8, 0.15)" }
+});
+var easings_tokens_default = easings2;
+// src/tokens/fontSizes.tokens.ts
+import { defineTokens as defineTokens12 } from "@pandacss/dev";
+var fontSizes2 = defineTokens12.fontSizes({
+  "2xs": { value: "0.5rem" },
+  xs: { value: "0.75rem" },
+  sm: { value: "0.875rem" },
+  md: { value: "1rem" },
+  lg: { value: "1.125rem" },
+  xl: { value: "1.25rem" },
+  "2xl": { value: "1.5rem" },
+  "3xl": { value: "1.875rem" },
+  "4xl": { value: "2.25rem" },
+  "5xl": { value: "3rem" },
+  "6xl": { value: "3.75rem" },
+  "7xl": { value: "4.5rem" },
+  "8xl": { value: "6rem" },
+  "9xl": { value: "8rem" }
+});
+var fontSizes_tokens_default = fontSizes2;
+// src/tokens/fonts.tokens.ts
+import { defineTokens as defineTokens13 } from "@pandacss/dev";
+var fonts2 = defineTokens13.fonts({
+  sans: {
+    value: [
+      "ui-sans-serif",
+      "system-ui",
+      "-apple-system",
+      "BlinkMacSystemFont",
+      '"Segoe UI"',
+      "Roboto",
+      '"Helvetica Neue"',
+      "Arial",
+      '"Noto Sans"',
+      "sans-serif",
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+      '"Noto Color Emoji"'
+    ]
   },
-  "5xl": {
-    value: { fontSize: "5xl", lineHeight: "3.75rem", letterSpacing: "-0.02em" }
+  serif: {
+    value: [
+      "ui-serif",
+      "Georgia",
+      "Cambria",
+      '"Times New Roman"',
+      "Times",
+      "serif"
+    ]
   },
-  "6xl": {
-    value: { fontSize: "6xl", lineHeight: "4.5rem", letterSpacing: "-0.02em" }
+  mono: {
+    value: [
+      "ui-monospace",
+      "SFMono-Regular",
+      "Menlo",
+      "Monaco",
+      "Consolas",
+      '"Liberation Mono"',
+      '"Courier New"',
+      "monospace"
+    ]
   },
-  "7xl": {
-    value: { fontSize: "7xl", lineHeight: "5.75rem", letterSpacing: "-0.02em" }
+  assistant: {
+    value: `var(--font-assistant), "Helvetica Neue", Helvetica, Arial, sans-serif`,
+    description: "Assistant (sans-serif) font"
   },
-  "8xl": {
-    value: { fontSize: "8xl", lineHeight: "6.5rem", letterSpacing: "-0.02em" }
-  },
-  "9xl": {
-    value: { fontSize: "9xl", lineHeight: "7.5rem", letterSpacing: "-0.02em" }
+  firaCode: {
+    value: `var(--font-fira-code), monospace`,
+    description: "Fira Code (mono) font"
   }
 });
-var textStyles_theme_default = textStyles;
-// src/conditions.theme.ts
-var conditions = {
-  extend: {
-    current: "&:is([data-current])",
-    hidden: "&:is([hidden])",
-    hover: [
-      "@media (hover: hover) and (pointer: fine)",
-      "&:is(:hover, [data-hover])"
-    ],
-    indeterminate: "&:is(:indeterminate, [data-indeterminate], [aria-checked=mixed], [data-state=indeterminate])",
-    off: '&:is([data-state="off"])',
-    on: '&:is([data-state="on"])',
-    today: "&:is([data-today])",
-    underValue: '&:is([data-state="under-value"])'
-  }
-};
-var conditions_theme_default = conditions;
-// src/globalCss.theme.ts
-import { defineGlobalStyles } from "@pandacss/dev";
-var globalCss = defineGlobalStyles({
-  "html, body": {
-    fontFamily: fonts_semantic_default["primary"].value
+var fonts_tokens_default = fonts2;
+// src/tokens/fontWeights.tokens.ts
+import { defineTokens as defineTokens14 } from "@pandacss/dev";
+var fontWeights2 = defineTokens14.fontWeights({
+  thin: { value: 100 },
+  extralight: { value: 200 },
+  light: { value: 300 },
+  normal: { value: 400 },
+  medium: { value: 500 },
+  semibold: { value: 600 },
+  bold: { value: 700 },
+  extrabold: { value: 800 },
+  black: { value: 900 }
+});
+var fontWeights_tokens_default = fontWeights2;
+// src/tokens/gradients.tokens.ts
+import { defineTokens as defineTokens15 } from "@pandacss/dev";
+var gradients2 = defineTokens15.gradients({});
+var gradients_tokens_default = gradients2;
+// src/tokens/letterSpacings.tokens.ts
+import { defineTokens as defineTokens16 } from "@pandacss/dev";
+var letterSpacings2 = defineTokens16.letterSpacings({
+  tighter: { value: "-0.05em" },
+  tight: { value: "-0.025em" },
+  normal: { value: "0em" },
+  wide: { value: "0.025em" },
+  wider: { value: "0.05em" },
+  widest: { value: "0.1em" }
+});
+var letterSpacings_tokens_default = letterSpacings2;
+// src/tokens/lineHeights.tokens.ts
+import { defineTokens as defineTokens17 } from "@pandacss/dev";
+var lineHeights2 = defineTokens17.lineHeights({
+  none: { value: 1 },
+  tight: { value: 1.25 },
+  snug: { value: 1.375 },
+  normal: { value: 1.5 },
+  relaxed: { value: 1.75 },
+  loose: { value: 2 }
+});
+var lineHeights_tokens_default = lineHeights2;
+// src/tokens/opacity.tokens.ts
+import { defineTokens as defineTokens18 } from "@pandacss/dev";
+var opacity2 = defineTokens18.opacity({});
+var opacity_tokens_default = opacity2;
+// src/tokens/radii.tokens.ts
+import { defineTokens as defineTokens19 } from "@pandacss/dev";
+var radii2 = defineTokens19.radii({
+  none: { value: "0" },
+  "2xs": { value: "0.0625rem" },
+  xs: { value: "0.125rem" },
+  sm: { value: "0.25rem" },
+  md: { value: "0.375rem" },
+  lg: { value: "0.5rem" },
+  xl: { value: "0.75rem" },
+  "2xl": { value: "1rem" },
+  "3xl": { value: "1.5rem" },
+  full: { value: "9999px" }
+});
+var radii_tokens_default = radii2;
+// src/tokens/shadows.tokens.ts
+import { defineTokens as defineTokens20 } from "@pandacss/dev";
+var shadows2 = defineTokens20.shadows({});
+var shadows_tokens_default = shadows2;
+// src/tokens/sizes.tokens.ts
+import { defineTokens as defineTokens22 } from "@pandacss/dev";
+
+// src/tokens/spacing.tokens.ts
+import { defineTokens as defineTokens21 } from "@pandacss/dev";
+var spacing2 = defineTokens21.spacing({
+  0: { value: "0rem" },
+  0.5: { value: "0.125rem" },
+  1: { value: "0.25rem" },
+  1.5: { value: "0.375rem" },
+  2: { value: "0.5rem" },
+  2.5: { value: "0.625rem" },
+  3: { value: "0.75rem" },
+  3.5: { value: "0.875rem" },
+  4: { value: "1rem" },
+  4.5: { value: "1.125rem" },
+  5: { value: "1.25rem" },
+  6: { value: "1.5rem" },
+  7: { value: "1.75rem" },
+  8: { value: "2rem" },
+  9: { value: "2.25rem" },
+  10: { value: "2.5rem" },
+  11: { value: "2.75rem" },
+  12: { value: "3rem" },
+  14: { value: "3.5rem" },
+  16: { value: "4rem" },
+  20: { value: "5rem" },
+  20.5: { value: "5.125rem" },
+  21: { value: "5.25rem" },
+  21.5: { value: "5.375rem" },
+  22: { value: "5.5rem" },
+  22.5: { value: "5.625rem" },
+  23: { value: "5.75rem" },
+  23.5: { value: "5.875rem" },
+  24: { value: "6rem" },
+  28: { value: "7rem" },
+  32: { value: "8rem" },
+  36: { value: "9rem" },
+  40: { value: "10rem" },
+  44: { value: "11rem" },
+  48: { value: "12rem" },
+  52: { value: "13rem" },
+  56: { value: "14rem" },
+  60: { value: "15rem" },
+  62: { value: "15.5rem" },
+  64: { value: "16rem" },
+  72: { value: "18rem" },
+  80: { value: "20rem" },
+  96: { value: "24rem" }
+});
+var spacing_tokens_default = spacing2;
+
+// src/tokens/sizes.tokens.ts
+var sizes2 = defineTokens22.sizes({
+  ...spacing_tokens_default,
+  full: { value: "100%" },
+  min: { value: "min-content" },
+  max: { value: "max-content" },
+  fit: { value: "fit-content" },
+  prose: { value: "65ch" },
+  "2xs": { value: "16rem" },
+  xs: { value: "20rem" },
+  sm: { value: "24rem" },
+  md: { value: "28rem" },
+  lg: { value: "32rem" },
+  xl: { value: "36rem" },
+  "2xl": { value: "42rem" },
+  "3xl": { value: "48rem" },
+  "4xl": { value: "56rem" },
+  "5xl": { value: "64rem" },
+  "6xl": { value: "72rem" },
+  "7xl": { value: "80rem" },
+  "8xl": { value: "90rem" }
+});
+var sizes_tokens_default = sizes2;
+// src/tokens/zIndex.tokens.ts
+import { defineTokens as defineTokens23 } from "@pandacss/dev";
+var zIndex2 = defineTokens23.zIndex({
+  hide: {
+    value: -1
   },
-  html: {
-    lineHeight: 1.5,
-    MozOsxFontSmoothing: "grayscale",
-    textRendering: "optimizeLegibility",
-    WebkitFontSmoothing: "antialiased",
-    WebkitTextSizeAdjust: "100%",
-    scrollPaddingTop: "6rem",
-    minHeight: "100%",
-    scrollBehavior: "smooth"
+  base: {
+    value: 0
   },
-  body: {
-    color: "foreground.default",
-    bgColor: "background.canvas",
-    fontFamily: "var(--font-primary), sans-serif",
-    _light: {
-      colorScheme: "light"
-    },
-    _dark: {
-      colorScheme: "dark"
-    }
+  foreground: {
+    value: 1
   },
-  "*, *::before, *::after": {
-    borderColor: "border.subtle",
-    borderStyle: "solid",
-    boxSizing: "border-box"
+  docked: {
+    value: 10
   },
-  "*::placeholder": {
-    opacity: 1,
-    color: "foreground.subtle"
+  dropdown: {
+    value: 1000
   },
-  "*::selection": {
-    color: "background.default",
-    bgColor: "accent.default"
+  sticky: {
+    value: 1100
+  },
+  banner: {
+    value: 1200
+  },
+  overlay: {
+    value: 1300
+  },
+  dialog: {
+    value: 1400
+  },
+  popover: {
+    value: 1500
+  },
+  skipLink: {
+    value: 1600
+  },
+  toast: {
+    value: 1700
+  },
+  tooltip: {
+    value: 1800
   }
 });
-var globalCss_theme_default = globalCss;
+var zIndex_tokens_default = zIndex2;
 export {
-  exports_tokens as tokens,
-  exports_semanticTokens as semanticTokens,
-  hexToRgba_default as hexToRgba,
-  globalCss_theme_default as globalCss,
+  conditions_theme_default as conditions,
   exports_extensions as extensions,
-  conditions_theme_default as conditions
+  globalCss_theme_default as globalCss,
+  hexToRgba_default as hexToRgba,
+  exports_semanticTokens as semanticTokens,
+  exports_tokens as tokens
 };

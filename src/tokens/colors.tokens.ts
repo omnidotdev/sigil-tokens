@@ -24,8 +24,8 @@ export const generateAlphaColors = (
 
         if (!alphaColors[key]) alphaColors[key] = {};
 
-        // @ts-expect-error indexing against Panda `Token`s is safe here
-        alphaColors[key][alphaValue] = {
+        // indexing against Panda `Token`s is safe here
+        (alphaColors[key] as Record<string, Token<string>>)[alphaValue] = {
           value: hexToRgba({ hex: value, alpha: +`0.${valueKey}` }),
         };
       });
