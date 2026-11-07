@@ -1,4 +1,10 @@
 node_modules
+
+# Rust crate build output (sigil-tokens-rs); the crate source is committed so
+# it is consumable as a git dependency, but target/ and the lockfile (library
+# convention) are not
+sigil-tokens-rs/target
+sigil-tokens-rs/Cargo.lock
 # build/ is committed so the package can be consumed as a git dependency
 # (mirrors @omnidotdev/garden-canvas); only the heavy sourcemaps are ignored
 build/**/*.map

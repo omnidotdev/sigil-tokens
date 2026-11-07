@@ -1,0 +1,15 @@
+[package]
+name = "sigil-tokens"
+version = "0.1.0"
+edition = "2021"
+description = "Omni Sigil design tokens for native (Rust) renderers, generated from the DTCG source of truth"
+license = "Apache-2.0"
+repository = "https://github.com/omnidotdev/sigil-tokens"
+
+[features]
+# egui theming adapter. Pinned to 0.29 to unify with aspen's egui tree
+# (bevy-inspector-egui 0.28 -> bevy_egui 0.31 -> egui 0.29).
+egui = ["dep:egui"]
+
+[dependencies]
+egui = { version = "0.29", optional = true, default-features = false }
