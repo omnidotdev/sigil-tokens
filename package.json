@@ -11,7 +11,8 @@
   "module": "build/index.js",
   "types": "build/index.d.ts",
   "files": [
-    "build"
+    "build",
+    "src/tailwind.css"
   ],
   "repository": {
     "type": "git",
@@ -25,7 +26,8 @@
     "./panda": {
       "types": "./build/panda/index.d.ts",
       "import": "./build/panda/index.js"
-    }
+    },
+    "./tailwind.css": "./src/tailwind.css"
   },
   "scripts": {
     "build": "bun src/scripts/build.ts",
@@ -34,6 +36,7 @@
     "snapshot": "bun src/scripts/snapshot.ts",
     "extract": "bun src/scripts/migrate/extract.ts",
     "emit-rust": "bun src/scripts/emit-rust.ts",
+    "emit-tailwind": "bun src/scripts/emit-tailwind.ts",
     "lint": "bunx tsc --noEmit",
     "prepare": "husky",
     "knip": "knip-bun",
