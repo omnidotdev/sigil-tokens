@@ -1,3 +1,4 @@
 bun knip
 bun biome check --write --staged --no-errors-on-unmatched src
 bun tsc --noEmit
+bun src/scripts/verify.ts

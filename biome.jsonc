@@ -7,7 +7,9 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "includes": ["**", "!!build"]
+    // `sigil-tokens-rs` is the generated Rust crate (not JS); biome does not
+    // process it.
+    "includes": ["**", "!!build", "!sigil-tokens-rs"]
   },
   "assist": {
     "actions": {
@@ -40,6 +42,13 @@
   },
   "linter": {
     "rules": {
+      "complexity": {
+        // Off: conflicts with tsconfig `noPropertyAccessFromIndexSignature`,
+        // which requires bracket access on index-signature types (e.g. Panda's
+        // `Tokens["colors"]`). The two rules are mutually exclusive; the tsc
+        // strictness is intentional, so bracket access wins.
+        "useLiteralKeys": "off"
+      },
       "correctness": {
         "noUnusedImports": { "fix": "safe", "level": "error" },
         "noUnusedVariables": {
