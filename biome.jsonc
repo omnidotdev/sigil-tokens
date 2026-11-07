@@ -8,8 +8,8 @@
   "files": {
     "ignoreUnknown": false,
     // `sigil-tokens-rs` is the generated Rust crate (not JS); biome does not
-    // process it.
-    "includes": ["**", "!!build", "!sigil-tokens-rs"]
+    // process it. `src/tailwind.css` is generated from the DTCG source.
+    "includes": ["**", "!!build", "!sigil-tokens-rs", "!src/tailwind.css"]
   },
   "assist": {
     "actions": {
