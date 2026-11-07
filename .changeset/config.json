@@ -5,12 +5,8 @@
     { "repo": "omnidotdev/sigil-tokens" }
   ],
   "commit": false,
-  "access": "restricted",
+  "access": "public",
   "baseBranch": "master",
   "updateInternalDependencies": "patch",
-  "ignore": [],
-  "privatePackages": {
-    "version": true,
-    "tag": true
-  }
+  "ignore": []
 }

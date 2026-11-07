@@ -9,6 +9,7 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 permissions:
   contents: write
   pull-requests: write
+  id-token: write
 
 jobs:
   release:
@@ -22,10 +23,9 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
       # changesets/action opens the "version packages" PR; on its merge it runs
-      # the publish script. This is a git-dependency package (consumed via
-      # github:omnidotdev/sigil-tokens), so `changeset publish` only tags the
-      # private package (privatePackages.tag) and does not publish to npm.
-      - name: Create release PR or tag release
+      # the publish script, which builds and publishes the public package to npm
+      # (it is also consumable as a git dependency via the committed build/).
+      - name: Create release PR or publish package
         id: changesets
         uses: changesets/action@v2
         with:
@@ -34,3 +34,5 @@ jobs:
           commit-message: "ci(changesets): version packages"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true
